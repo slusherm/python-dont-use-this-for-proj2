@@ -26,6 +26,10 @@ class SudokuApp(clingo.Application):
     def __init__(self):
         self.program_name = "sudoku1"
  
+    def print_model(self, model, printer):
+        atoms = sorted(str(atom) for atom in model.symbols(shown=True))
+        printer(" ".join(atoms))
+ 
     def main(self, ctl, files):
         ctl.add("base", [], SUDOKU_ENCODING)
         for f in files:
