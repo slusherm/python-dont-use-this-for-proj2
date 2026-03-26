@@ -8,7 +8,14 @@ class Sudoku:
 
     def __str__(self) -> str:
         s = ""
-        # YOUR CODE HERE
+        for row in range(1, 10):
+            cells = []
+            for col in range(1, 10):
+                val = self.sudoku.get((row, col), None)
+                cells.append(str(val) if val is not None else "-")
+            s += " ".join(cells[0:3]) + "  " + " ".join(cells[3:6]) + "  " + " ".join(cells[6:9]) + "\n"
+            if row % 3 == 0:
+                s += "\n"
         return s
 
     @classmethod
